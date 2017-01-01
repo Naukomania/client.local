@@ -1,0 +1,25 @@
+<div>
+    <h1>Каталог подборок: редактирование подборки</h1>
+
+    <p>{{ message}}</p>
+    <form role="form" name="myForm">
+        <div class= "form-group" ng-class="{error: myForm.title.$invalid}">
+            <label> Название </label>
+            <div>
+                <input name="title" ng-model="node.title" type= "text" class= "form-control" placeholder="Название подборки" required/>
+                <span ng-show="myForm.title.$dirty && myForm.title.$invalid" class="help-inline">Название обязательно</span>
+            </div>
+        </div>
+        <div class= "form-group">
+            <label> Родительский узел </label>
+            <div>
+                <input name="node_id" ng-model="node.node_id" type= "text" class= "form-control" placeholder="Родительский узел" />
+            </div>
+        </div>
+
+        <a href="#!/node/index" class="btn btn-default">Cancel</a>
+        <button ng-click="updateNode(node);"
+                ng-disabled="isClean() || myForm.$invalid"
+                type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>

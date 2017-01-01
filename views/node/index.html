@@ -1,5 +1,35 @@
-<div class="jumbotron text-center">
-    <h1>Подборки</h1>
-
-    <p>{{ message }}</p>
+<div>
+    <h1>Каталог подборок</h1>
+    <p>{{ message}}</p>
+    <div ng-show="nodes.length > 0">
+        <a class="btn btn-primary" href="#!/node/create">
+            <i class="glyphicon glyphicon-plus"></i> Добавить
+        </a>
+        <table class="table table-striped table-hover">
+            <thead>
+            <th>id</th>
+            <th>parent id</th>
+            <th>Название</th>
+            <th style="width:80px;">Действия&nbsp;</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in nodes">
+                <td>{{data.id}}</td>
+                <td>{{data.node_id}}</td>
+                <td>{{data.title}}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="#!/node/update/{{data.id}}">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <a class="btn btn-danger btn-xs" ng-click="deleteNode(data.id)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="nodes.length == 0">
+        Каталог подборок пуст
+    </div>
 </div>
